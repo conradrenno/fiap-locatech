@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class VeiculoRepositoryImp implements VeiculoRepository{
+public class VeiculoRepositoryImp implements VeiculoRepository {
 
     private final JdbcClient jdbcClient;
 
@@ -52,7 +52,7 @@ public class VeiculoRepositoryImp implements VeiculoRepository{
     public Integer update(Veiculo veiculo, Long id) {
         return this.jdbcClient
                 .sql("UPDATE veiculos SET marca = :marca, modelo= :modelo, placa= :placa, ano= :ano, cor= :cor, valor_diaria= :valor_diaria, WHERE id= :id")
-                .param("id",id)
+                .param("id", id)
                 .param("marca", veiculo.getMarca())
                 .param("modelo", veiculo.getModelo())
                 .param("placa", veiculo.getPlaca())
