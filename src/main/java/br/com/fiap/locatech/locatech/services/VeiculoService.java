@@ -22,7 +22,7 @@ public class VeiculoService {
     }
 
     public List<Veiculo> findAll(int page, int size) {
-        int offset = (page - 1) * size;
+        int offset = page * size;
         return this.veiculoRepository.findAll(size, offset);
     }
 

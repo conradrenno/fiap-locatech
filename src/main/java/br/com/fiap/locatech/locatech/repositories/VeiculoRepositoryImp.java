@@ -40,8 +40,8 @@ public class VeiculoRepositoryImp implements VeiculoRepository {
         return this.jdbcClient
                 .sql("INSERT INTO veiculos (marca, placa, modelo, ano, cor, valor_diaria) VALUES (:marca, :placa, :modelo, :ano, :cor, :valorDiaria)")
                 .param("marca", veiculo.getMarca())
-                .param("modelo", veiculo.getModelo())
                 .param("placa", veiculo.getPlaca())
+                .param("modelo", veiculo.getModelo())
                 .param("ano", veiculo.getAno())
                 .param("cor", veiculo.getCor())
                 .param("valorDiaria", veiculo.getValorDiaria())
@@ -51,11 +51,11 @@ public class VeiculoRepositoryImp implements VeiculoRepository {
     @Override
     public Integer update(Veiculo veiculo, Long id) {
         return this.jdbcClient
-                .sql("UPDATE veiculos SET marca = :marca, modelo= :modelo, placa= :placa, ano= :ano, cor= :cor, valor_diaria= :valor_diaria, WHERE id= :id")
+                .sql("UPDATE veiculos SET marca = :marca, placa= :placa, modelo= :modelo, ano= :ano, cor= :cor, valor_diaria= :valorDiaria WHERE id= :id")
                 .param("id", id)
                 .param("marca", veiculo.getMarca())
-                .param("modelo", veiculo.getModelo())
                 .param("placa", veiculo.getPlaca())
+                .param("modelo", veiculo.getModelo())
                 .param("ano", veiculo.getAno())
                 .param("cor", veiculo.getCor())
                 .param("valorDiaria", veiculo.getValorDiaria())
