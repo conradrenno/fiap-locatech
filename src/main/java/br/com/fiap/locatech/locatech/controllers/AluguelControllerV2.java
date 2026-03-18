@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/v1/alugueis")
-public class AluguelController {
-    public static final Logger logger = LoggerFactory.getLogger(AluguelController.class);
+@RequestMapping("/v2/alugueis")
+public class AluguelControllerV2 {
+    public static final Logger logger = LoggerFactory.getLogger(AluguelControllerV2.class);
 
     private final AluguelService aluguelService;
 
-    public AluguelController(AluguelService aluguelService) {
+    public AluguelControllerV2(AluguelService aluguelService) {
         this.aluguelService = aluguelService;
     }
 
@@ -40,7 +40,7 @@ public class AluguelController {
         return ResponseEntity.ok(aluguel);
     }
 
-    @PostMapping
+    @PostMapping(produces = "application/vnd.locatech.v2+jason")
     public ResponseEntity<Void> save(@Valid @RequestBody AluguelRequestDTO aluguel) {
         logger.info("Endpoint POST aluguel(/alugueis");
         this.aluguelService.save(aluguel);
